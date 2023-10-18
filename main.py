@@ -3,9 +3,9 @@ from write_to_canvas import *
 
 
 
-lab_no = 3
-lab_no_spoof = 9
-section_name = "L14"
+lab_no = 4
+lab_no_spoof = 5
+section_name = "L1C"
 term = "2023W1"
 cpsc_121 = 123413
 
