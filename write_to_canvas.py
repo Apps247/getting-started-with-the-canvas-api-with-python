@@ -27,7 +27,7 @@ def load_course(course_id):
 def get_lab_section(lab_section_code, term, course_code="CPSC 121"):
     """
     Args:
-    - section (str): The section number.
+    - section (str): The section number, (e.g. L1C).
     - term (str): The term in the format of YYYYT# (e.g. 2023W1).
     - course_code (str): The course code (default is "CPSC 121").
     """
@@ -48,19 +48,64 @@ def get_lab_assignment(lab_no, term, course_code="CPSC 121"):
             lab_no = "0" + lab_no
         if str(assignment.name) == "Lab " + lab_no:
             return assignment
+        
+def get_students(section):
+    """Gets the students in a lab section with their Canvas user id and name.
+    
+    Keyword arguments:
+    section -- Canvas section object
+    lab -- Canvas assignment object
+
+    Returns: list of Canvas enrollment objects which can be indexed for 'name' or 'id'
+    """
+    
+    return [enrollment for enrollment in section.get_enrollments() if enrollment.type == "StudentEnrollment"]
+
+def update_grades(lab, section, student_grades):
+    """Updates the grades of students in a lab section.
+    
+    Keyword arguments:
+    lab -- Canvas assignment object
+    student_grades -- dictionary of student names and their corresponding total marks for the lab
+    """
+    print("Updating Grades...")
+    
+    for student in student_grades:
+        print("Student: " + student + ", Grade: " + str(student_grades[student]))
+
+    for student in get_students(section):
+        if student.user['name'] in student_grades:
+            grade = student_grades[student.user['name']]
+            if grade is None:
+                print(f"No grade available for {student.user['name']} in Excel Sheet")
+                # todo: log
+                pass
+            else:
+                if print(lab.get_submission(1083406).grade) is not None:
+                    print(f"{student.user['name']} is already graded")
+                    # todo: log
+                    pass
+                else:
+                    lab.get_submission(student.user['id']).edit(submission={'posted_grade': grade})
+                    # print(f"Updated {student.user['name']}'s grade to {grade}.")
+        else:
+            # todo: log
+            print(f"{student.user['name']} not found in Excel Sheet")
+            print(student.user['name'])
 
 
-welcome_user()
-load_course(123413)
-section = get_lab_section("L14", "2023W1")
-lab = get_lab_assignment(2, "2023W1")
-print(lab)
+if __name__ == "__main__":
+    welcome_user()
+    load_course(123413)
+    section = get_lab_section("L14", "2023W1")
+    lab = get_lab_assignment(2, "2023W1")
+    print(lab)
 
 
-print(lab.get_submission(1083406).grade)
+# print(lab.get_submission(1083406).grade)
 # print(lab.get_submission(1083406).delete())
 # print(lab.get_submission(1083406).edit(submission={'grade': 2}))
-print(lab.get_submission(1083406).edit(submission={'posted_grade': 3}))
+# print(lab.get_submission(1083406).edit(submission={'posted_grade': 3}))
 
 # for student in section.get_enrollments():
 #     print(student.user)

@@ -21,9 +21,15 @@ def read_excel(file_path, lab_no, header=[0,1], fn_col='FN', ln_col='LN', total_
 
     df = pd.read_excel(file_path, sheet_name=lab_title, header=header)
 
-    names = df[lab_title, ln_col] + ', ' + df[lab_title, fn_col] # formats names to canvas format ("LN, FN")
+    names = df[lab_title, fn_col] + ' ' + df[lab_title, ln_col] # formats names to canvas format ("LN, FN")
     # name_col = df[lab_title][fn_col] + ' ' + df[lab_title][ln_col]
     totals = find_total_col(total_col, df)
+
+    if len(names) != len(totals):
+        raise Exception("Number of names and totals do not match.")
+    
+    if len(names) != len(set(names)):
+        raise Exception("There are duplicate names.")
  
     return dict(zip(names, totals))
 
@@ -34,5 +40,7 @@ def find_total_col(total_col, df): # Returns column full of total marks
         for subcolname in colname:
             if total_col in subcolname:
                 return df[colname]
+            
+
     
 
