@@ -80,17 +80,17 @@ def update_grades(lab, section, student_grades):
                 # todo: log
                 pass
             else:
+
                 if print(lab.get_submission(1083406).grade) is not None:
                     print(f"{student.user['name']} is already graded")
                     # todo: log
-                    pass
+
                 else:
                     lab.get_submission(student.user['id']).edit(submission={'posted_grade': grade})
                     # print(f"Updated {student.user['name']}'s grade to {grade}.")
         else:
             # todo: log
             print(f"{student.user['name']} not found in Excel Sheet")
-            print(student.user['name'])
 
 
 if __name__ == "__main__":
