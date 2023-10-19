@@ -14,14 +14,13 @@ global course
 
 def welcome_user():
     user = canvas_api.get_user('self')
-    print(type(user))
     print("Welcome, " + user.name)
 
 def load_course(course_id):
     # course id is Canvas course id in format of 123456
     global course
     course = canvas_api.get_course(course_id)
-    print("Loaded course: " + course.name)
+    print("Course: " + course.name)
 
 
 def get_lab_section(lab_section_code, term, course_code="CPSC 121"):

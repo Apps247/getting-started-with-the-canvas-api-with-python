@@ -1,11 +1,11 @@
 from read_excel import read_excel
 from write_to_canvas import *
 
-
-
-lab_no = 4
-lab_no_spoof = 5
-section_name = "L1C"
+section_name = input("Enter section name (eg: L12): ")
+lab_no = int(input("Enter lab number (eg: Enter 2 for Lab 02): "))
+lab_no_spoof = None
+if lab_no_spoof is not None:
+    lab_no = lab_no_spoof
 term = "2023W1"
 cpsc_121 = 123413
 
@@ -14,13 +14,14 @@ welcome_user()
 load_course(cpsc_121)
 section = get_lab_section(section_name, term)
 lab = get_lab_assignment(lab_no, term)
-lab_spoof = get_lab_assignment(lab_no_spoof, term)
 print(lab)
 print(section)
 
 # for student in get_students(section):
 #     print(student.user['name'])
-
-update_grades(lab_spoof, section, student_grades)
+if input("Confirm? (Y/n)") in ["Yes", "Y", "Ya", "Of course"]:
+    update_grades(lab, section, student_grades)
+else:
+    print("Cancelled")
 
 print()

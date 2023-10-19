@@ -21,7 +21,7 @@ def read_excel(file_path, lab_no, header=[0,1], fn_col='FN', ln_col='LN', total_
 
     df = pd.read_excel(file_path, sheet_name=lab_title, header=header)
 
-    names = df[lab_title, fn_col] + ' ' + df[lab_title, ln_col] # formats names to canvas format ("LN, FN")
+    names = df[lab_title, fn_col] + ' ' + df[lab_title, ln_col]
     # name_col = df[lab_title][fn_col] + ' ' + df[lab_title][ln_col]
     totals = find_total_col(total_col, df)
 
