@@ -5,6 +5,9 @@ import canvasapi
 env_file = 'sample.env'
 dotenv.load_dotenv(env_file)
 
+log_file = open('log.txt', 'w')
+
+
 TOKEN = os.environ.get('CANVAS_API_TOKEN')
 BASEURL = 'https://ubc.instructure.com'
 
@@ -67,30 +70,32 @@ def update_grades(lab, section, student_grades):
     lab -- Canvas assignment object
     student_grades -- dictionary of student names and their corresponding total marks for the lab
     """
-    print("Updating Grades...")
     
+    log("Retrieved grades from Excel:")
     for student in student_grades:
-        print("Student: " + student + ", Grade: " + str(student_grades[student]))
+        log("Student: " + student + ", Grade: " + str(student_grades[student]))
 
+    log("Writing to Canvas...")
     for student in get_students(section):
         if student.user['name'] in student_grades:
             grade = student_grades[student.user['name']]
             if grade is None:
-                print(f"No grade available for {student.user['name']} in Excel Sheet")
-                # todo: log
-                pass
+                log(f"No grade available for {student.user['name']} in Excel Sheet")
             else:
-
-                if print(lab.get_submission(1083406).grade) is not None:
-                    print(f"{student.user['name']} is already graded")
-                    # todo: log
-
+                if lab.get_submission(student.user['id']).grade is not None:
+                    log(f"{student.user['name']} is already graded")
                 else:
                     lab.get_submission(student.user['id']).edit(submission={'posted_grade': grade})
-                    # print(f"Updated {student.user['name']}'s grade to {grade}.")
+                    log(f"Updated {student.user['name']}'s grade to {grade}.", silent=True)
         else:
-            # todo: log
-            print(f"{student.user['name']} not found in Excel Sheet")
+            log(f"{student.user['name']} not found in Excel Sheet")
+    log("Operation completed")
+
+
+def log(message, silent=False):
+    log_file.write(message + "\n")
+    if not silent:
+        print(message)
 
 
 if __name__ == "__main__":
@@ -99,6 +104,8 @@ if __name__ == "__main__":
     section = get_lab_section("L14", "2023W1")
     lab = get_lab_assignment(2, "2023W1")
     print(lab)
+    for student in get_students(section):
+        print(student.user)
 
 
 # print(lab.get_submission(1083406).grade)

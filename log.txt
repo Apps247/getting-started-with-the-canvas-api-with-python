@@ -1,0 +1,52 @@
+Retrieved grades from Excel:
+Student: Alex Kwok, Grade: 11.0
+Student: Ali Mohamed Sadek, Grade: 10.5
+Student: Andrew Joseph, Grade: 11.0
+Student: Brando Tunggul Gultom, Grade: 11.0
+Student: Brian Lee, Grade: 9.25
+Student: Frederick Sunstrum, Grade: 11.0
+Student: Ibrahim Saeed, Grade: 10.25
+Student: Ifeanyi Anene, Grade: 10.75
+Student: Jason Liang, Grade: 11.0
+Student: Jerry Gai, Grade: 10.5
+Student: Jorryn Yapadi, Grade: 9.0
+Student: Lila Chan, Grade: 10.0
+Student: Louisa Tambunting, Grade: 10.0
+Student: Rain Yang, Grade: 11.0
+Student: Renbo Xu, Grade: 10.0
+Student: Saharah Bains, Grade: 9.5
+Student: Shannon Sulistio, Grade: 11.0
+Student: SHAUN GUIMOND, Grade: 10.5
+Student: Thi Viet Thao Ho, Grade: 10.0
+Student: Waris Bhatia, Grade: 10.0
+Student: Zainab Baig, Grade: 10.0
+Student: Ziyang Zhou, Grade: 11.0
+Student: Dev Soni, Grade: 0.0
+Student: Hamza Pasha, Grade: 0.0
+Student: Sarah Buddhason, Grade: 2.0
+Student: Shivom Srivastava, Grade: 0.0
+Writing to Canvas...
+Ifeanyi Anene is already graded
+Zainab Baig is already graded
+Saharah Bains is already graded
+Waris Bhatia is already graded
+Sarah Buddhason is already graded
+Lila Chan is already graded
+Jerry(Qun) Gai not found in Excel Sheet
+SHAUN GUIMOND is already graded
+Brando Tunggul Gultom is already graded
+Thi Viet Thao Ho is already graded
+Andrew Joseph is already graded
+Alex Kwok is already graded
+Brian Lee is already graded
+Jason Liang is already graded
+Ali Mohamed Sadek is already graded
+Ibrahim Saeed is already graded
+Shivom Srivastava is already graded
+Shannon Sulistio is already graded
+Frederick Sunstrum is already graded
+Louisa Tambunting is already graded
+Renbo Xu is already graded
+Rain Yang is already graded
+Jorryn Yapadi is already graded
+Ziyang Zhou is already graded

@@ -1,6 +1,8 @@
 from read_excel import read_excel
 from write_to_canvas import *
 
+print("CPSC 121 Lab Grade Automation Script by Aprameya Aithal\n")
+
 section_name = input("Enter section name (eg: L12): ")
 lab_no = int(input("Enter lab number (eg: Enter 2 for Lab 02): "))
 lab_no_spoof = None
@@ -24,4 +26,3 @@ if input("Confirm? (Y/n)") in ["Yes", "Y", "Ya", "Of course"]:
 else:
     print("Cancelled")
 
-print()
