@@ -73,9 +73,9 @@ def update_grades(lab, section, student_grades):
     
     log("Retrieved grades from Excel:")
     for student in student_grades:
-        log("Student: " + student + ", Grade: " + str(student_grades[student]))
+        log("Student: " + str(student) + ", Grade: " + str(student_grades[student]), silent=True)
 
-    log("Writing to Canvas...")
+    log("\n\nWriting the above to Canvas...")
     for student in get_students(section):
         if student.user['name'] in student_grades:
             grade = student_grades[student.user['name']]
